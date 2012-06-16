@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script type="text/javascript" src="https://raw.github.com/dhavaln/cordova-examples/master/android-cordova-plugin/assets/www/lib/android/cordova-1.7.0.js"></script>
         <script type="text/javascript">
             (function(){
@@ -26,6 +27,7 @@ function gotFS(fileSystem) {
 
 var successCB = function(entry){
     console.log("dir found " + entry.fullPath);
+	$("#imgContainer").append($("img").attr("src", entry.fullPath + "/1335801699503.png"); 
 };
    
 var failCB = function(e){
@@ -35,6 +37,14 @@ var failCB = function(e){
         </script>
     </head>
     <body>
-        <button>Click me</button>
+        <button id="loadImage">Load local image</button>
+		<div id="imgContainer" style="width: 200px; height: 200px;">
+		</div>
     </body>
-</html>?
+	
+	<script type="text/javascript">
+		$("#loadImage").click(function(){
+			
+		});
+	</script>
+</html>
