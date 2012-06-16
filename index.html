@@ -1,1 +1,40 @@
-My Github Page
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://raw.github.com/dhavaln/cordova-examples/master/android-cordova-plugin/assets/www/lib/android/cordova-1.7.0.js"></script>
+        <script type="text/javascript">
+            (function(){
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    console.log("device is ready");
+    window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+}
+
+function fail() {
+    console.log("failed to get filesystem");
+}
+
+function gotFS(fileSystem) {
+    window.FS = fileSystem;
+
+    window.FS.root.getDirectory(".yofroyo", {
+            create : true,
+            exclusive : false
+    }, successCB, failCB);
+}
+
+var successCB = function(entry){
+    console.log("dir found " + entry.fullPath);
+};
+   
+var failCB = function(e){
+    console.log("error to get dir " + e);
+};
+})();
+        </script>
+    </head>
+    <body>
+        <button>Click me</button>
+    </body>
+</html>?
